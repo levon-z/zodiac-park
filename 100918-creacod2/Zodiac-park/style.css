@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Homepage stijl */
+body.home {
+  background-color: #fcd6dc;
+}
+
+/* Prestatiepagina met zodiac achtergrond */
+body.prestaties {
+  background: url('img/zodiac.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Donker overlay op zodiac achtergrond (optioneel) */
+body.prestaties::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pijl in het midden van homepage */
+.arrow {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  width: 10vw;
+  height: 10vw;
+  background: url('arrow.png') no-repeat center;
+  background-size: contain;
+  transform: translateX(-50%);
+}
+
+/* QR icoon onderaan */
+.qr-icon {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 20vw;
+  height: 20vw;
+  background: url('qr-code.png') no-repeat center;
+  background-size: contain;
+  transform: translateX(-50%);
+}
+
+/* Knop rechtsboven: prestatie */
+.prestatie-knop {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  width: 10vw;
+  height: 10vw;
+  background-color: white;
+  color: black;
+  font-size: 6vw;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Knop linksboven: terug */
+/* Terugknop linksboven */
+.terug-knop {
+  position: fixed;
+  top: 2vh;
+  left: 2vw;
+  width: 10vw;
+  height: 10vw;
+  background-color: white;
+  color: black;
+  font-size: 6vw;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 10vw;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+/* Trofee-knop gecentreerd bovenaan */
+.trofee-knop {
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12vw;
+  height: 12vw;
+  background-color: white;
+  color: black;
+  font-size: 7vw;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 12vw;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+
+
+/* Raster voor prestatiebollen */
+.kaart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5vw;
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 20vh;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Bollen styling */
+.bol {
+  width: 16vw;
+  height: 16vw;
+  border-radius: 50%;
+  position: relative;
+}
+
+.groen {
+  background-color: #4caf50;
+}
+
+.rood {
+  background-color: #f44336;
+}
+
+/* Tooltip bij hover of aanraken */
+.bol::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 3vw;
+  white-space: nowrap;
+  display: none;
+  z-index: 10;
+}
+
+.bol:hover::after,
+.bol:active::after {
+  display: block;
+}
+
+/* Scanner overlay midden op het scherm */
+.scanner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  transform: translate(-50%, -50%);
+  border: 4px solid white;
+  border-radius: 5vw;
+  background: rgba(255, 255, 255, 0.1);
+}
+.voortgang {
+  width: 90vw;
+  margin: 4vh auto;
+  text-align: center;
+  color: white;
+  font-size: 4vw;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2vw;
+  overflow: hidden;
+  margin-top: 1vh;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%; /* dit vullen we met JavaScript */
+  transition: width 0.5s ease-in-out;
+}
+body.scanner {
+  background: url('img/8424dbe1b3834d6947ca8201027f95cd.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+.scanner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.qr-scanner-kader {
+  width: 60vw;
+  height: 60vw;
+  border: 6px solid white;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* QR-code afbeelding (transparant) in het kader */
+.qr-scanner-kader img {
+  width: 80%;  /* Zorgt ervoor dat de QR-code goed schaalt */
+  height: 80%;  /* Zorgt ervoor dat de QR-code vierkant blijft */
+  opacity: 0.7 ;  /* 50% transparantie */
+  object-fit: contain;  /* Zorgt ervoor dat de afbeelding goed schaalt */
+}
+
+
+/* Knop voor QR-code scanner onderaan in het midden */
+.qr-scanner-knop {
+  position: absolute;
+  bottom: 5vh; /* Net boven de onderkant van het scherm */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: transparent; /* Geen achtergrondkleur omdat we een afbeelding gebruiken */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.qr-scanner-knop:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Lichte overlay bij hover */
+}
+
+.scanner-icon {
+  width: 6rem; /* Pas de grootte van het icoon aan */
+  height: 6rem; /* Zorg ervoor dat het icoon vierkant is */
+}

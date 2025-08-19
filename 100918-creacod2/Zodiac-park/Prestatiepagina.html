@@ -1,0 +1,48 @@
+<!-- prestaties.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Prestaties</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="prestaties">
+  <a href="scanner.html" class="nav-button"></a>
+  <a href="index.html" class="terug-knop">←</a>
+  <a href="index.html" class="terug-knop">←</a>
+<a href="#" class="trofee-knop">🏆</a>
+
+  <div class="kaart">
+    <div class="bol groen" data-tooltip="Attractie 1"></div>
+    <div class="bol groen" data-tooltip="Attractie 2"></div>
+    <div class="bol groen" data-tooltip="Attractie 3"></div>
+    <div class="bol groen" data-tooltip="Attractie 4"></div>
+    <div class="bol rood" data-tooltip="Attractie 5"></div>
+    <div class="bol rood" data-tooltip="Attractie 6"></div>
+    <div class="bol rood" data-tooltip="Attractie 7"></div>
+    <div class="bol rood" data-tooltip="Attractie 8"></div>
+    <div class="bol rood" data-tooltip="Attractie 9"></div>
+  </div>
+  <div class="voortgang">
+    <p><span id="teGaanText">Nog X van Y attracties te gaan</span></p>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bollen = document.querySelectorAll('.bol');
+      const totaal = bollen.length;
+      const gescand = Array.from(bollen).filter(bol => bol.classList.contains('groen')).length;
+      const teGaan = totaal - gescand;
+  
+      const percentage = (gescand / totaal) * 100;
+  
+      document.getElementById('progress').style.width = percentage + '%';
+      document.getElementById('teGaanText').textContent = `Nog ${teGaan} van ${totaal} attracties te gaan`;
+    });
+  </script>
+  
+</body>
+</html>

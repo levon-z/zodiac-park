@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zodiac Park - Welkom</title>
+  <link rel="stylesheet" href="loading.css" />
+</head>
+<body class="loading">
+
+  <div class="loading-wrapper">
+
+    <h1>Welkom bij Zodiac Park</h1>
+    <div class="loading-bar-container">
+      <div class="loading-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+    <p>De sterren wachten op je...</p>
+  </div>
+
+  <script>
+    window.onload = function () {
+      let progress = document.querySelector('.progress');
+      let width = 0;
+      let interval = setInterval(function () {
+        if (width >= 100) {
+          clearInterval(interval);
+          window.location.href = 'index.html';  // Stuur gebruiker door naar homepage of andere pagina
+        } else {
+          width++;
+          progress.style.width = width + '%';
+        }
+      }, 50);  // De snelheid van de voortgang
+    }
+  </script>
+
+</body>
+</html>
